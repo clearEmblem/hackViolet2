@@ -1,0 +1,71 @@
+.explanation p {
+  font-size: 1.125rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-top: 15px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.explanation h1 {
+  font-size: 2.5rem;
+  color: #2d3748;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center; /* This will center the text horizontally */
+}
+
+h2 {
+  font-size: 5rem;
+  text-align: center;
+}
+
+.card-group {
+  /*original is 33*/
+  padding-right: 20rem;
+  padding-left: 20rem;
+}
+
+.card-body {
+  background-color: antiquewhite;
+}
+
+button {
+  text-align: center;
+  justify-content: center;
+  width: 10rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: min-content;
+  background-color: antiquewhite;
+}
+
+.fade-emoji {
+  opacity: 0;
+}
+
+.show-emoji {
+  animation: showEmoji 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+}
+
+@keyframes showEmoji {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(1.5);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateY(10px) scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
