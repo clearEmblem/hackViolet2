@@ -117,7 +117,7 @@ while (currentIndex != 0) {
     array[randomIndex],
     array[currentIndex],
   ];
-}
+
 /* This is for the gifs method */
 // icons[0].innerHTML = `<img src ="${gifArray[0]}" alt="Skeleton">`;
 //icons[1].innerHTML = `<img src ="${gifArray[1]}" alt="Key">`;
@@ -130,5 +130,5 @@ icons[1].innerText = array[1];
 icons[2].innerText = array[2];
 let emojiSting = array[0] + array[1] + array[2];
 console.log(emojiSting);
-
+}
 Window.wordList = wordList;
