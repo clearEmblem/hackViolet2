@@ -69,9 +69,18 @@
     </nav>
 
     
-    <!-- Centered Content Section -->
-    <div class="container d-flex flex-column align-items-end justify-content-center" style="height: 90vh;">
-      <textarea class="form-control mb-3" rows="25" style="width: 70%;" readonly></textarea>
+    <!-- Flex Container for Side-by-Side Textareas with Larger Width and More Spacing -->
+    <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+      <div class="me-5" style="width: 40%;"> <!-- Increased width and spacing -->
+        <textarea class="form-control mb-3" rows="25" style="width: 100%;" readonly></textarea>
+      </div>
+      <div style="width: 40%;"> <!-- Increased width -->
+        <textarea class="form-control mb-3" rows="25" style="width: 100%;" readonly></textarea>
+      </div>
+    </div>
+
+    <!-- Button placed below the rightmost text box -->
+    <div class="text-center mt-4">
       <button class="btn btn-primary">I'm Ready!</button>
     </div>
     
