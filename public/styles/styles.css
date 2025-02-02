@@ -1,6 +1,27 @@
 .custom-navbar {
   background-color:rgb(65, 37, 1)
 }
+.navbar-brand {
+  font-family: 'MuseoModerno', serif;
+  font-size: 2rem; /* Adjust font size as needed */
+  font-weight: bold; /* Optional, to make the text bold */
+  color:#d4a385;
+  text-transform: uppercase;
+}
+.letter {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+  opacity: 1;
+}
+.navbar-brand:hover .letter {
+  opacity: 1;
+  animation: bounce 0.6s ease-in-out forwards;
+}
+
+.navbar-brand:hover {
+  color:#d4a385
+}
+
 @keyframes bounce {
   0%
   {
@@ -15,6 +36,15 @@
 }
 .bounce-image:hover{
   animation: bounce 0.6s ease-in-out;
+}
+
+@font-face {
+  font-family: 'Museo Moderno';
+  src: url('fonts/museo_moderno-regular.woff2') format('woff2'),
+       url('fonts/museo_moderno-regular.woff') format('woff'),
+       url('fonts/museo_moderno-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .explanation p {
