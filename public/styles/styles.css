@@ -124,7 +124,7 @@ h2 {
 }
 
 .card-body {
-  background-color: var(--background-color);
+  background-color: rgb(42, 44, 46);
 }
 
 button {
