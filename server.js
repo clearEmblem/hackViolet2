@@ -18,16 +18,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Set up temp folder path
-const tempFolderPath = "/tmp/audioUploads";
+// Use Vercel's temporary storage
+const tempFolder = "/tmp";
 
-// Ensure the temp folder exists
-if (!fs.existsSync(tempFolderPath)) {
-    fs.mkdirSync(tempFolderPath, { recursive: true });
-}
-
-// Configure Multer to store files in temp folder
-const upload = multer({ dest: tempFolderPath });
+// Configure Multer to store files in /tmp (Vercel's writable temp directory)
+const upload = multer({ dest: tempFolder });
 
 // Gemini configuration
 const apiKey = process.env.GEMINI_API_KEY || "AIzaSyBSmCA-Vpx4hQgefEcFFlsDxuzRq6zVbDk"; // Use env variable
