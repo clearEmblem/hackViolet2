@@ -130,7 +130,22 @@ export default (req, res) => {
   app(req, res);
 };
 
+<<<<<<< Updated upstream
 // Local development
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => console.log(`Server started on port ${port}`));
 }
+=======
+app.get("/results", (req, res) => {
+  res.render("results");
+});
+
+
+app.listen(3001, () => {
+  console.log("server is running on port 3000");
+<<<<<<< Updated upstream
+});
+=======
+});
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
