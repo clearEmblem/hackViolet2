@@ -1,7 +1,5 @@
-// api/index.js (or api/server.js)
-const express = require("express");
-const path = require("path");
-
+const express = require('express');
+const path = require('path');
 const app = express();
 
 // Set Content-Security-Policy header
@@ -10,12 +8,11 @@ app.use((req, res, next) => {
   next();
 });
 
-// Set the view engine (EJS)
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "public/views"));  // Assuming your views are inside 'public/views'
+app.set("views", path.join(__dirname, "../public/views"));  // Adjust path if necessary
+app.set("view engine", "ejs");  // Assuming you are using EJS
 
 // Serve static files
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 // Define routes
 app.get("/", (req, res) => {
@@ -34,11 +31,7 @@ app.get("/page4", (req, res) => {
   res.render("page4");
 });
 
-app.get("/results", (req, res) => {
-  res.render("results");
-});
-
 // Export the app as a serverless function for Vercel
 module.exports = (req, res) => {
-  app(req, res);  // Let Express handle the request/response
+  app(req, res);
 };
