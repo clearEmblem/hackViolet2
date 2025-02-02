@@ -1,9 +1,9 @@
 /* Define Default Theme */
 :root {
-  --primary-color: rgb(247, 247, 247);
-  --secondary-color: rgb(24, 24, 48);
-  --text-color: rgb(63, 63, 118);
-  --background-color: rgb(24, 24, 48);
+  --primary-color: rgb(42, 44, 46) !important;
+  --secondary-color: rgb(208, 205, 200) !important;
+  --text-color: rgb(154, 168, 196) !important;
+  --background-color: rgb(24, 24, 48) !important;
   --highlight-color: red;
   --font-family: 'MuseoModerno', serif;
 }
