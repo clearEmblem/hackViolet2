@@ -58,12 +58,23 @@ document.addEventListener('DOMContentLoaded', () => {
         relevanceBar.innerText = `Relevance: ${data.relevance.score}%`;
     }
 
+    // Function to update accordion content
+    function updateAccordionContent(data) {
+        const weakSentencesElement = document.getElementById('weak-sentences');
+        const strongSentencesElement = document.getElementById('strong-sentences');
+        const missedTopicsElement = document.getElementById('missed-topics');
+
+        weakSentencesElement.innerHTML = `<strong>Weak Sentence:</strong> ${data.examples.weak_sentence.sentence}<br><strong>Explanation:</strong> ${data.examples.weak_sentence.explanation}`;
+        strongSentencesElement.innerHTML = `<strong>Strong Sentence:</strong> ${data.examples.strong_sentence.sentence}<br><strong>Explanation:</strong> ${data.examples.strong_sentence.explanation}`;
+        missedTopicsElement.innerHTML = `<strong>Missed Topics:</strong> ${data.missing_topics.join(', ')}`;
+    }
+
     // Create the JSON object to send in the POST request
     const apiPush = {
         transcript: transcript
     };
 
-    // Call the API and update progress bars
+    // Call the API and update progress bars and accordion content
     fetch('http://localhost:8001/grade', {
         method: 'POST',
         headers: {
@@ -77,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (data && data.gradeResult && data.gradeResult.ratings) { // Check for nested properties
                 updateProgressBars(data.gradeResult.ratings); // Access ratings directly
+                updateAccordionContent(data.gradeResult); // Update accordion content
             } else {
                 console.error("Invalid API response:", data);
             }
