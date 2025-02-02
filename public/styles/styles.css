@@ -5,12 +5,13 @@
   font-family: 'MuseoModerno', serif;
   font-size: 2rem; /* Adjust font size as needed */
   font-weight: bold; /* Optional, to make the text bold */
-  color:#d4a385;
+  color:#d4a385 !important;
   text-transform: uppercase;
+  transition: color 0.3s ease-in-out;
 }
 .letter {
   display: inline-block;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   opacity: 1;
 }
 .navbar-brand:hover .letter {
