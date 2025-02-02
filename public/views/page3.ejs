@@ -14,6 +14,7 @@
     <nav class="navbar navbar-expand-lg custom-navbar">
       
       <div class="container-fluid">
+<<<<<<< Updated upstream
         <a class="navbar-brand" href="#" id="website-name">
 
         </a>
@@ -40,6 +41,28 @@
           })
       
 
+=======
+        <a class="navbar-brand" href="#" id="website-name"></a>
+        <script>
+          const websiteName = "mumbl";
+          const websiteNameContainer = document.getElementById('website-name');
+          
+          if (websiteNameContainer) {
+            // Split the website name into individual letters and wrap each in a <span>
+            websiteName.split('').forEach((letter, index) => {
+              const letterSpan = document.createElement('span');
+              letterSpan.classList.add('letter');
+              letterSpan.textContent = letter;
+              // Add a delay to each letter based on its index (stagger the delay)
+              letterSpan.style.animationDelay = `${index * 0.1}s`; // 0.1s delay for each letter
+              websiteNameContainer.appendChild(letterSpan);
+            });
+
+            websiteNameContainer.addEventListener('click', function() {
+              window.location.href = '/';  // Redirect to Page 1 (root URL)
+            });
+          }
+>>>>>>> Stashed changes
         </script>
 
         <button
@@ -72,6 +95,7 @@
       </div>
     </nav>
 
+<<<<<<< Updated upstream
     <br>
 
     
@@ -103,15 +127,25 @@
 
       <br />
 
+=======
+    
+      <br />
+    
+>>>>>>> Stashed changes
       <div class="container text-center">
         <button
           type="button"
           class="btn btn-success btn-lg"
           id="button"
+<<<<<<< Updated upstream
+=======
+          onclick="status()"
+>>>>>>> Stashed changes
         >
           Roll
         </button>
       </div>
+<<<<<<< Updated upstream
 
       <br />
 
@@ -122,7 +156,70 @@
       <br />
 
       
+=======
+    
+      <br />
+    
+      <div class="container text-center">
+        <audio class="playback" controls></audio>
+      </div>
+    
+      <br />
+    
+      <div class="explanation">
+    
+        <p class="m13">
+          This activity hopes to improve speaking skills through improv.<br><br>
+    
+    
+          1. Click roll to generate 3 emojis.<br><br>
+    
+    
+          2. Click record and try to speak using the 3 emojis given. 
+        </p>
+      </div>
     </div>
+    
+   
+      
+      
+      
+    <!-- Button placed below the rightmost text box -->
+    <div class="text-center mt-4">
+      <button class="btn btn-primary">I'm Ready!</button>
+>>>>>>> Stashed changes
+    </div>
+
+    <!-- Include JavaScript Modules -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    
+    <script type="module" src="/scripts/app.js"></script>
+    <script type="module" src="/scripts/audio.js"></script>
+    <script type="module" src="/scripts/animations.js"></script>
+    
+    <script>
+      function status() {
+        console.log("Status function called");
+      }
+
+      // Function to show and hide pages based on the button clicked
+      function showView(pageNumber) {
+        // Hide all pages
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((page) => (page.style.display = "none"));
+
+        // Show the selected page
+        const selectedPage = document.getElementById("page" + pageNumber);
+        if (selectedPage) {
+          selectedPage.style.display = "block";
+        }
+      }
+    </script>
     
 
 
