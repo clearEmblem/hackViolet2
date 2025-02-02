@@ -2,9 +2,9 @@
   "name": "nodejs-sandbox",
   "version": "1.0.0",
   "description": "This is a Node.js project.",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node --watch index.js"
+    "start": "node --watch api/index.js"
   },
   "keywords": [],
   "author": "Ives van Hoorne",
@@ -16,6 +16,5 @@
     "motion": "^12.0.6",
     "nodemon": "^3.1.9",
     "tailwind-merge": "^3.0.1"
-  },
-  "devDependencies": {}
+  }
 }
