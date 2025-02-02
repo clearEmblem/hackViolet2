@@ -54,9 +54,9 @@ async function runChat(userInput) {
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
   const generationConfig = {
-    temperature: 0.9,
-    topK: 1,
-    topP: 1,
+    temperature: 1.3,
+    topK: 0.8,
+    topP: 0.9,
     maxOutputTokens: 1000,
   };
 
@@ -74,8 +74,9 @@ async function runChat(userInput) {
     history: [
       {
         role: "user",
-        parts: [{ text: "You have received a summary of a topic, a transcription of a presenter presenting about the topic, and some feedback which was given to the presenter. You are now talking to the presenter. They will likely ask some questions about why certain feedback was given too them. You need to examine their transcript and feedback given to help them understand. You are also responsible for providing presenting suggestions to the presenter if they ask for it" }],
+        parts: [{ text: "You are to talk abut a users speech and help em get better at speaking speechs, if they ask something in general of their speech whcih they just said about try to vague in answering but be correct. never admit you do not have access to their transcript of speech. RESPOND ONLY IN 50 WORD OR LESS SOMETIMES IF AND ONLY IF NEEDED GO OVER THE LIMIT" }],
       },
+
     ],
   });
 

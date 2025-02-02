@@ -2,8 +2,20 @@ const sendButton = document.getElementById('send-button');
 const chatInput = document.getElementById('chat-input');
 const chatContent = document.getElementById('chat-content');
 
+async function waitForChatData() {
+    // Wait until both "transcript" and "feedback" exist in local storage
+    while (!localStorage.getItem("transcript") || !localStorage.getItem("feedback")) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    return `this is my data which i am providing you advise me on this ${localStorage.getItem("transcript")} and now the feedback ${localStorage.getItem("feedback")}`;
+}
+
 async function sendMessage() {
-    const userMessage = chatInput.value;
+    // If chatInput is empty, wait for the necessary chat data and use it as the message.
+    let userMessage = chatInput.value.trim();
+    if (!userMessage) {
+        userMessage = await waitForChatData();
+    }
 
     try {
         const response = await fetch('/api/chat', {
@@ -20,6 +32,7 @@ async function sendMessage() {
 
         // Append user and bot messages to the chat content
         chatContent.innerHTML += `<div class="user-message">${userMessage}</div>`;
+        chatContent.innerHTML += `<br>`;
         chatContent.innerHTML += `<div class="bot-message">${botMessage}</div>`;
 
         // Scroll to the bottom of the chat content
@@ -31,7 +44,7 @@ async function sendMessage() {
 }
 
 sendButton.addEventListener('click', () => {
-    if (chatInput.value.trim()) {
+    if (chatInput.value.trim() || localStorage.getItem("transcript") && localStorage.getItem("feedback")) {
         sendMessage();
         chatInput.value = '';
     }

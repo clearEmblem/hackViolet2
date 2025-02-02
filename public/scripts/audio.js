@@ -59,35 +59,25 @@ let recorder = null;
 let chunks = [];
 
 function recordSetup() {
-  console.log("setup");
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices
-      .getUserMedia({
-        audio: true,
-      })
-      .then(setupStream)
-      .catch((e) => {
-        console.log(e);
-      });
-  }
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      recorder = new MediaRecorder(stream);
+      recorder.ondataavailable = e => {
+        chunks.push(e.data);
+      };
+      recorder.onstop = () => {
+        const audioBlob = new Blob(chunks, { type: 'audio/mp3' });
+        saveAudioToLocalStorage(audioBlob);
+        sendAudioToServer(audioBlob);
+        chunks = [];
+        // Redirect to the results page after recording stops
+
+      };
+      canRecord = true;
+    })
+    .catch(err => console.error('Error accessing media devices.', err));
 }
 recordSetup();
-
-function setupStream(stream) {
-  recorder = new MediaRecorder(stream);
-  recorder.ondataavailable = (e) => {
-    chunks.push(e.data);
-  };
-  recorder.onstop = (e) => {
-    const blob = new Blob(chunks, { type: "audio/mpeg; codecs=opus" });
-    chunks = [];
-    const audioURL = window.URL.createObjectURL(blob);
-    playback.src = audioURL;
-    console.log(audioURL);
-    sendAudioToServer(blob);
-  };
-  canRecord = true;
-}
 
 function toggleMic() {
   if (!canRecord) return;
@@ -136,6 +126,7 @@ function sendAudioToServer(audioBlob) {
     .then(data => {
       console.log('Transcript:', data);
       localStorage.setItem('transcript', data);
+      window.location.href = '/results';
     })
     .catch(error => {
       console.error('Error sending audio to server:', error);

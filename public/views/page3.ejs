@@ -3,44 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 3</title>
+    <title>Page 2</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
 
-  <body style="background-color: rgb(24, 24, 48)">
+  <body style="background-color: rgb(193, 193, 219)">
     <nav class="navbar navbar-expand-lg custom-navbar">
+      
       <div class="container-fluid">
         <a class="navbar-brand" href="#" id="website-name">
-          
-        </a>
 
+        </a>
         <script>
 
-          const websiteName = "mumbl";
-    
-          const websiteNameContainer = document.getElementById('website-name');
-          
-          // Split the website name into individual letters and wrap each in a <span>
-          websiteName.split('').forEach((letter, index) => {
-            const letterSpan = document.createElement('span');
-            letterSpan.classList.add('letter');
-            letterSpan.textContent = letter;
-            // Add a delay to each letter based on its index (stagger the delay)
-            letterSpan.style.animationDelay = `${index * 0.1}s`; // 0.1s delay for each letter
-            websiteNameContainer.appendChild(letterSpan);
-          });
+      const websiteName = "mumbl";
 
-          websiteNameContainer.addEventListener('click', function()
+      const websiteNameContainer = document.getElementById('website-name');
+      
+      // Split the website name into individual letters and wrap each in a <span>
+      websiteName.split('').forEach((letter, index) => {
+        const letterSpan = document.createElement('span');
+        letterSpan.classList.add('letter');
+        letterSpan.textContent = letter;
+        // Add a delay to each letter based on its index (stagger the delay)
+        letterSpan.style.animationDelay = `${index * 0.1}s`; // 0.1s delay for each letter
+        websiteNameContainer.appendChild(letterSpan);
+
+      });
+
+        websiteNameContainer.addEventListener('click', function()
            {
             window.location.href = '/';  // Redirect to Page 1 (root URL)
           })
-    
-            </script>
+      
 
-        
+        </script>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -52,8 +53,11 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- Navigation buttons -->
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
@@ -68,21 +72,105 @@
       </div>
     </nav>
 
-    
-    <!-- Flex Container for Side-by-Side Textareas with Larger Width and More Spacing -->
-    <div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
-      <div class="me-5" style="width: 40%;"> <!-- Increased width and spacing -->
-        <textarea class="form-control mb-3" rows="25" style="width: 100%;" readonly></textarea>
-      </div>
-      <div style="width: 40%;"> <!-- Increased width -->
-        <textarea class="form-control mb-3" rows="25" style="width: 100%;" readonly></textarea>
-      </div>
-    </div>
+    <br>
 
-    <!-- Button placed below the rightmost text box -->
-    <div class="text-center mt-4">
-      <button class="btn btn-primary">I'm Ready!</button>
+    
+  <div class="container">
+    <div class="card" id="card" style="border-radius: 2em;">
+      <div class="card-body" id="text">
+...      </div>
+    </div>
+  </div>
+    <div id="page1" class="page" style="display: block;">
+      <br /><br />
+      <div class="card-group" style="transform: scale(0); height: 0; overflow: hidden;">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">😀</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">😀</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">😀</h2>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="container text-center">
+        <button
+          type="button"
+          class="btn btn-success btn-lg"
+          id="button"
+        >
+          Roll
+        </button>
+      </div>
+
+      <br />
+
+      <div class="container text-center">
+        <audio class="playback" controls></audio>
+      </div>
+
+      <br />
+
+      
     </div>
     
+
+
+
+
+    
+    <!-- Include JavaScript Modules -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="module" src="/scripts/app.js"></script>
+    <script type="module" src="/scripts/audio.js"></script>
+
+    <script>
+      // Function to show and hide pages based on the button clicked
+      function showView(pageNumber) {
+        // Hide all pages
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((page) => (page.style.display = "none"));
+
+        // Show the selected page
+        const selectedPage = document.getElementById("page" + pageNumber);
+        selectedPage.style.display = "block";
+      }
+    </script>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", async () => {
+        async function generateStory() {
+          const prompt = "Return a 3 - 5 paragraph summary about a random (well known) topic. Only include the summary in the output. Seperate the paragraphs by two new lines. Don't use the same prompt as last time (if you cannot remember your last answer you should make sure the summary is of something unique)";
+          try {
+            const response = await fetch('/api/chat', {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ userInput: prompt })
+            });
+            const data = await response.json();
+            document.getElementById("text").innerHTML = data.response;
+          } catch (error) {
+            console.error("Error generating story:", error);
+            document.getElementById("text").innerHTML = "Sorry, unable to load story.";
+          }
+        }
+        generateStory();
+      });
+    </script>
   </body>
 </html>

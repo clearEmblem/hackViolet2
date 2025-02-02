@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateProgressBars(data.gradeResult.ratings); // Access ratings directly
                 updateAccordionContent(data.gradeResult); // Update accordion content
                 updateCards(data.gradeResult.ratings); // Update cards
+                localStorage.setItem('feedback', JSON.stringify(data.gradeResult)); // Store the grade result
             } else {
                 console.error("Invalid API response:", data);
             }
