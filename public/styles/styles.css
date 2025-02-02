@@ -167,7 +167,6 @@ button {
   }
 }
 
-<<<<<<< Updated upstream
   audio::-webkit-media-controls-panel {
     background-color: rgb(154, 168, 196);  /* Dark background */
     color: white;
@@ -199,10 +198,3 @@ button {
   }
 
 
-=======
-audio::-webkit-media-controls-panel {
-  background-color: rgb(154, 168, 196);
-  /* Dark background */
-  color: white;
-}
->>>>>>> Stashed changes
