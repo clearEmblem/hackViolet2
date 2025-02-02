@@ -10,6 +10,7 @@
   "author": "Ives van Hoorne",
   "license": "MIT",
   "dependencies": {
+    "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
