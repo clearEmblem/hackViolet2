@@ -3,7 +3,7 @@
   --primary-color: rgb(42, 44, 46) !important;
   --secondary-color: rgb(208, 205, 200) !important;
   --text-color: rgb(154, 168, 196) !important;
-  --background-color: rgb(24, 24, 48) !important;
+
   --highlight-color: red;
   --font-family: 'MuseoModerno', serif;
 }
@@ -54,9 +54,17 @@ body {
 }
 
 @keyframes bounce {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .bounce-image:hover {
@@ -66,8 +74,8 @@ body {
 @font-face {
   font-family: 'Museo Moderno';
   src: url('fonts/museo_moderno-regular.woff2') format('woff2'),
-       url('fonts/museo_moderno-regular.woff') format('woff'),
-       url('fonts/museo_moderno-regular.ttf') format('truetype');
+    url('fonts/museo_moderno-regular.woff') format('woff'),
+    url('fonts/museo_moderno-regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -147,16 +155,19 @@ button {
     opacity: 0;
     transform: translateY(-50px) scale(1.5);
   }
+
   50% {
     opacity: 0.5;
     transform: translateY(10px) scale(0.8);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
 }
 
+<<<<<<< Updated upstream
   audio::-webkit-media-controls-panel {
     background-color: rgb(154, 168, 196);  /* Dark background */
     color: white;
@@ -188,3 +199,10 @@ button {
   }
 
 
+=======
+audio::-webkit-media-controls-panel {
+  background-color: rgb(154, 168, 196);
+  /* Dark background */
+  color: white;
+}
+>>>>>>> Stashed changes
