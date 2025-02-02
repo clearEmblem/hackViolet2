@@ -14,7 +14,6 @@
     <nav class="navbar navbar-expand-lg custom-navbar">
       
       <div class="container-fluid">
-<<<<<<< Updated upstream
         <a class="navbar-brand" href="#" id="website-name">
 
         </a>
@@ -41,28 +40,6 @@
           })
       
 
-=======
-        <a class="navbar-brand" href="#" id="website-name"></a>
-        <script>
-          const websiteName = "mumbl";
-          const websiteNameContainer = document.getElementById('website-name');
-          
-          if (websiteNameContainer) {
-            // Split the website name into individual letters and wrap each in a <span>
-            websiteName.split('').forEach((letter, index) => {
-              const letterSpan = document.createElement('span');
-              letterSpan.classList.add('letter');
-              letterSpan.textContent = letter;
-              // Add a delay to each letter based on its index (stagger the delay)
-              letterSpan.style.animationDelay = `${index * 0.1}s`; // 0.1s delay for each letter
-              websiteNameContainer.appendChild(letterSpan);
-            });
-
-            websiteNameContainer.addEventListener('click', function() {
-              window.location.href = '/';  // Redirect to Page 1 (root URL)
-            });
-          }
->>>>>>> Stashed changes
         </script>
 
         <button
