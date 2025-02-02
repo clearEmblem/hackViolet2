@@ -148,5 +148,24 @@ button {
     color: white;
   }
 
+  .about
+  {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .logo {
+    --font-family: 'Museo Moderno', serif;
+    src: url('fonts/museo_moderno-regular.woff2') format('woff2'),
+       url('fonts/museo_moderno-regular.woff') format('woff'),
+       url('fonts/museo_moderno-regular.ttf') format('truetype');
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 10rem;
+
+
+  }
+
 
 
