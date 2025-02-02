@@ -3,6 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
   waitForElement("#record").then((recordButton) => {
     console.log("Record button found:", recordButton);
     recordButton.addEventListener("click", toggleMic);
+
+    const recSymbol = document.createElement("span");
+    recSymbol.textContent = "🔴";
+    const containerDiv = document.querySelector(".container.text-center");
+
+    containerDiv.appendChild(recSymbol);
+    if (recordingSymbol.style.visibility === "visible") {
+      recordingSymbol.style.visibility = "hidden";
+    } else {
+      recordingSymbol.style.visibility = "visible";
+    }
+
   });
 });
 
