@@ -21,7 +21,7 @@ body {
 .navbar-brand {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--secondary-color);
+  color: var(--secondary-color) !important;
   text-transform: uppercase;
 }
 
