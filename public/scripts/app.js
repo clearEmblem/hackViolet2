@@ -1,6 +1,7 @@
 let btn = document.getElementById("button");
 const icons = document.querySelectorAll("h2");
 const record = document.querySelector(".container");
+let emojiString = '';
 const wordList = ["key", "flashlight", "skeleton"];
 
 btn.addEventListener("click", function (e) {
@@ -100,29 +101,31 @@ function getImages() {
     "🚀",
   ];
 
-let currentIndex = array.length;
+  let currentIndex = array.length;
 
-while (currentIndex != 0) {
-  let randomIndex = Math.floor(Math.random() * currentIndex);
-  currentIndex--;
+  while (currentIndex != 0) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
 
-  [array[currentIndex], array[randomIndex]] = [
-    array[randomIndex],
-    array[currentIndex],
-  ];
-}
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
 
-/* This is for the gifs method */
-// icons[0].innerHTML = `<img src ="${gifArray[0]}" alt="Skeleton">`;
-//icons[1].innerHTML = `<img src ="${gifArray[1]}" alt="Key">`;
-// icons[2].innerHTML = `<img src ="${gifArray[2]}" alt="Flashlight">`;
+  /* This is for the gifs method */
+  // icons[0].innerHTML = `<img src ="${gifArray[0]}" alt="Skeleton">`;
+  //icons[1].innerHTML = `<img src ="${gifArray[1]}" alt="Key">`;
+  // icons[2].innerHTML = `<img src ="${gifArray[2]}" alt="Flashlight">`;
 
-/* This is used for the emojis method */
+  /* This is used for the emojis method */
 
-icons[0].innerText = array[0];
-icons[1].innerText = array[1];
-icons[2].innerText = array[2];
-let emojiSting = array[0] + array[1] + array[2];
-console.log(emojiSting);
+  icons[0].innerText = array[0];
+  icons[1].innerText = array[1];
+  icons[2].innerText = array[2];
+  emojiString = array[0] + array[1] + array[2];
+  console.log(emojiString);
+
+  localStorage.setItem('topic2', emojiString);
 }
 Window.wordList = wordList;
