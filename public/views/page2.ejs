@@ -31,7 +31,14 @@
         // Add a delay to each letter based on its index (stagger the delay)
         letterSpan.style.animationDelay = `${index * 0.1}s`; // 0.1s delay for each letter
         websiteNameContainer.appendChild(letterSpan);
+
       });
+
+        websiteNameContainer.addEventListener('click', function()
+           {
+            window.location.href = '/';  // Redirect to Page 1 (root URL)
+          })
+      
 
         </script>
 
