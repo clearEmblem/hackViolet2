@@ -18,11 +18,17 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Use Vercel's temporary storage
-const tempFolder = "/tmp";
+// 🔹 Explicitly define Multer storage in /tmp/
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "/tmp"); // Force files to be saved in /tmp
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  }
+});
 
-// Configure Multer to store files in /tmp (Vercel's writable temp directory)
-const upload = multer({ dest: tempFolder });
+const upload = multer({ storage });
 
 // Gemini configuration
 const apiKey = process.env.GEMINI_API_KEY || "AIzaSyBSmCA-Vpx4hQgefEcFFlsDxuzRq6zVbDk"; // Use env variable
@@ -94,6 +100,8 @@ app.post('/upload', upload.single("audio"), async (req, res) => {
     
     const filePath = req.file.path;
     const mimeType = req.file.mimetype || 'audio/mpeg';
+
+    console.log("File saved at:", filePath); // Debugging
 
     const transcription = await run(filePath, mimeType);
 
