@@ -142,3 +142,11 @@ button {
     transform: translateY(0) scale(1);
   }
 }
+
+  audio::-webkit-media-controls-panel {
+    background-color: rgb(154, 168, 196);  /* Dark background */
+    color: white;
+  }
+
+
+
