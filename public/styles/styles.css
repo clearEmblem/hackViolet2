@@ -15,6 +15,15 @@
   text-transform: uppercase;
   text-align: center; /* This will center the text horizontally */
 }
+
+.navbar-nav .nav-link {
+  color: antiquewhite !important;  /* Set text color to white */
+}
+
+.navbar-nav .nav-link:hover {
+  color: antiquewhite !important;  /* Optional: Slightly dim color on hover */
+}
+
 .recording-active {
   background-color: red !important;
   border-color: darkred !important;
