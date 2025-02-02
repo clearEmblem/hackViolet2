@@ -1,9 +1,13 @@
 const playback = document.querySelector(".playback");
+let recorder;
+let chunks = [];
+let canRecord = false;
+let isRecording = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   waitForElement("#record").then((recordButton) => {
     console.log("Record button found:", recordButton);
-    
+
     recordButton.addEventListener("click", () => {
       toggleMic(); // Keep mic recording function as it is
 
@@ -53,39 +57,25 @@ function waitForElement(selector) {
   });
 }
 
-let canRecord = false;
-let isRecording = false;
-let recorder = null;
-let chunks = [];
-
 function recordSetup() {
-  console.log("setup");
-  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices
-      .getUserMedia({
-        audio: true,
-      })
-      .then(setupStream)
-      .catch((e) => {
-        console.log(e);
-      });
-  }
-}
-recordSetup();
-
-function setupStream(stream) {
-  recorder = new MediaRecorder(stream);
-  recorder.ondataavailable = (e) => {
-    chunks.push(e.data);
-  };
-  recorder.onstop = (e) => {
-    const blob = new Blob(chunks, { type: "audio/mpeg; codecs=opus" });
-    chunks = [];
-    const audioURL = window.URL.createObjectURL(blob);
-    playback.src = audioURL;
-    console.log(audioURL);
-  };
-  canRecord = true;
+  navigator.mediaDevices.getUserMedia({ audio: true })
+    .then(stream => {
+      recorder = new MediaRecorder(stream);
+      recorder.ondataavailable = e => {
+        chunks.push(e.data);
+      };
+      recorder.onstop = () => {
+        const audioBlob = new Blob(chunks, { type: 'audio/mp3' });
+        saveAudioToLocalStorage(audioBlob);
+        sendAudioToServer(audioBlob);
+        chunks = [];
+        const audioURL = window.URL.createObjectURL(audioBlob);
+        playback.src = audioURL;
+        console.log(audioURL);
+      };
+      canRecord = true;
+    })
+    .catch(err => console.error('Error accessing media devices.', err));
 }
 
 function toggleMic() {
@@ -100,3 +90,46 @@ function toggleMic() {
     console.log("stopped recording");
   }
 }
+
+function saveAudioToLocalStorage(audioBlob) {
+  const reader = new FileReader();
+  reader.readAsDataURL(audioBlob);
+  reader.onloadend = function () {
+    const base64data = reader.result;
+    localStorage.setItem('audioFile', base64data);
+    console.log('Audio file saved to local storage');
+  };
+}
+
+function getAudioFromLocalStorage() {
+  const base64data = localStorage.getItem('audioFile');
+  if (base64data) {
+    const audio = new Audio(base64data);
+    audio.controls = true;
+    document.body.appendChild(audio);
+    console.log('Audio file retrieved from local storage');
+  } else {
+    console.log('No audio file found in local storage');
+  }
+}
+
+function sendAudioToServer(audioBlob) {
+  const formData = new FormData();
+  formData.append('audio', audioBlob, 'recording.mp3');
+
+  fetch('http://localhost:8001/upload', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.text())
+    .then(data => {
+      console.log('Transcript:', data);
+      localStorage.setItem('transcript', data);
+    })
+    .catch(error => {
+      console.error('Error sending audio to server:', error);
+    });
+}
+
+// Initialize the recording setup
+recordSetup();

@@ -1,48 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/styles/styles2.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles/styles.css" />
-  </head>
-
-  <body style="background-color: antiquewhite">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Prototype</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Page 1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/page2">Page 2</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/page3">Page 3</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/page4">Page 4</a>
-            </li>
-          </ul>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .scrollable {
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        .full-height {
+            height: 100vh;
+        }
+        .fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 60px; /* Adjust the width */
+            height: 60px; /* Adjust the height */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px; /* Adjust the font size */
+        }
+        .card-title {
+            font-size: 2rem; /* Make the card title larger */
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 3rem; /* Make the topic text larger */
+            font-weight: bold;
+        }
+        .card-body {
+            padding: 2rem; /* Add padding to the card body */
+        }
+        .progress-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+        }
+        .progress-circle .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .progress-container {
+            margin-top: 2rem;
+        }
+        .progress-container .progress {
+            height: 1.5rem;
+            border-radius: 0.75rem;
+        }
+        .progress-container .progress-bar {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+    </style>
+</head>
+<body style="background-color: antiquewhite">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" id="website-name">
+                <script>
+                    const websiteName = "mumbl";
+                    const websiteNameContainer = document.getElementById('website-name');
+                    // Split the website name into individual letters and wrap each in a <span>
+                    websiteName.split('').forEach((letter, index) => {
+                        const letterSpan = document.createElement('span');
+                        letterSpan.classList.add('letter');
+                        letterSpan.textContent = letter;
+                        // Add a delay to each letter based on its index (stagger the delay)
+                        letterSpan.style.animationDelay = `${index * 0.1}s`; // 0.1s delay for each letter
+                        websiteNameContainer.appendChild(letterSpan);
+                    });
+                    websiteNameContainer.addEventListener('click', function() {
+                        window.location.href = '/';  // Redirect to Page 1 (root URL)
+                    });
+                </script>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Page 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/page2">Page 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/page3">Page 3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/page4">Page 4</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
+  </br>
 
-    <h1>Results</h1>
-    <p>Some results should prob go here</p>
-  </body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Full-page card on the left -->
+            <div class="col-md-4">
+                <div class="card full-height">
+                    <div class="card-body text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="progress-circle" id="progress-circle">
+                                <div class="progress-text">75/100</div>
+                            </div>
+                            <div class="ms-3">
+                                <h5 class="card-title">Your Speech On</h5>
+                                <h1 class="card-text" id="topic">This  page.</h1>
+                            </div>
+                        </div>
+                        <audio id="audio" controls class="w-100 mt-3"></audio>
+                        <button class="btn btn-primary w-100 mt-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">View Transcript</button>
+                        
+                        <!-- Progress bars with text descriptions -->
+                        <div class="progress-container">
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-success" id="professionalism-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">Professionalism</div>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-info" id="speaking-skills-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Speaking Skills</div>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-warning" id="information-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Information</div>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-danger" id="time-management-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">Time Management</div>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-primary" id="grammar-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">Grammar</div>
+                            </div>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-secondary" id="relevance-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Relevance</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion on the right -->
+            <div class="col-md-8 scrollable">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Accordion Item #1
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Accordion Item #2
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Accordion Item #3
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas for transcript -->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Transcript</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p id="trans">Error getting your transcript.</p>
+        </div>
+    </div>
+
+    <!-- Floating action button -->
+    <button class="btn btn-primary fab" type="button">
+        <i class="bi bi-plus"></i> <!-- Add an icon if needed -->
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
+    <script src="/scripts/results.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize the circular progress bar
+            const progressCircle = new ProgressBar.Circle('#progress-circle', {
+                color: '#007bff',
+                strokeWidth: 6,
+                trailWidth: 1,
+                easing: 'easeInOut',
+                duration: 1400,
+                text: {
+                    autoStyleContainer: false
+                },
+                from: { color: '#007bff', width: 1 },
+                to: { color: '#007bff', width: 6 },
+                // Set default value to 75%
+                step: function(state, circle) {
+                    circle.path.setAttribute('stroke', state.color);
+                    circle.path.setAttribute('stroke-width', state.width);
+                }
+            });
+
+            progressCircle.animate(0.75);  // Number from 0.0 to 1.0
+        });
+    </script>
+</body>
 </html>
