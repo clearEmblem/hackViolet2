@@ -9,6 +9,7 @@
   "keywords": [],
   "author": "Ives van Hoorne",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
