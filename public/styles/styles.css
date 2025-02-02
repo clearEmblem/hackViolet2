@@ -1,3 +1,22 @@
+.custom-navbar {
+  background-color:rgb(65, 37, 1)
+}
+@keyframes bounce {
+  0%
+  {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.bounce-image:hover{
+  animation: bounce 0.6s ease-in-out;
+}
+
 .explanation p {
   font-size: 1.125rem;
   color: #4a5568;

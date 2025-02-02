@@ -100,13 +100,6 @@ function getImages() {
     "🚀",
   ];
 
-
-// const gifArray = [
-//  "../images/med skeleton.gif",
-//  "../images/key.gif",
-//  "../images/flashlight.gif",
-//];
-
 let currentIndex = array.length;
 
 while (currentIndex != 0) {
