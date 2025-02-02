@@ -1,41 +1,52 @@
+/* Define Default Theme */
+:root {
+  --primary-color: rgb(247, 247, 247);
+  --secondary-color: rgb(24, 24, 48);
+  --text-color: rgb(63, 63, 118);
+  --background-color: rgb(24, 24, 48);
+  --highlight-color: red;
+  --font-family: 'MuseoModerno', serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
 .custom-navbar {
-  background-color:rgb(65, 37, 1)
+  background-color: var(--primary-color);
 }
+
 .navbar-brand {
-  font-family: 'MuseoModerno', serif;
-  font-size: 2rem; /* Adjust font size as needed */
-  font-weight: bold; /* Optional, to make the text bold */
-  color:#d4a385 !important;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--secondary-color);
   text-transform: uppercase;
-  transition: color 0.3s ease-in-out;
 }
+
 .letter {
   display: inline-block;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   opacity: 1;
 }
+
 .navbar-brand:hover .letter {
   opacity: 1;
   animation: bounce 0.6s ease-in-out forwards;
 }
 
 .navbar-brand:hover {
-  color:#d4a385
+  color: var(--secondary-color);
 }
 
 @keyframes bounce {
-  0%
-  {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
 }
-.bounce-image:hover{
+
+.bounce-image:hover {
   animation: bounce 0.6s ease-in-out;
 }
 
@@ -63,19 +74,19 @@
   margin-bottom: 20px;
   font-weight: bold;
   text-transform: uppercase;
-  text-align: center; /* This will center the text horizontally */
+  text-align: center;
 }
 
 .navbar-nav .nav-link {
-  color: antiquewhite !important;  /* Set text color to white */
+  color: var(--text-color) !important;
 }
 
 .navbar-nav .nav-link:hover {
-  color: antiquewhite !important;  /* Optional: Slightly dim color on hover */
+  color: var(--text-color) !important;
 }
 
 .recording-active {
-  background-color: red !important;
+  background-color: var(--highlight-color) !important;
   border-color: darkred !important;
   color: white !important;
 }
@@ -86,13 +97,12 @@ h2 {
 }
 
 .card-group {
-  /*original is 33*/
   padding-right: 20rem;
   padding-left: 20rem;
 }
 
 .card-body {
-  background-color: antiquewhite;
+  background-color: var(--background-color);
 }
 
 button {
@@ -106,7 +116,7 @@ button {
   justify-content: center;
   align-items: center;
   height: min-content;
-  background-color: antiquewhite;
+  background-color: var(--background-color);
 }
 
 .fade-emoji {
@@ -122,12 +132,10 @@ button {
     opacity: 0;
     transform: translateY(-50px) scale(1.5);
   }
-
   50% {
     opacity: 0.5;
     transform: translateY(10px) scale(0.8);
   }
-
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
