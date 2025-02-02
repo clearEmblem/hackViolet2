@@ -162,11 +162,11 @@ button {
     color: white;
   }
 
-<<<<<<< Updated upstream
   .about
   {
     text-align: center;
     font-size: 2rem;
+    font-weight: normal;
   }
 
   .logo {
@@ -179,41 +179,12 @@ button {
     text-transform: uppercase;
     font-size: 10rem;
 
+    .desc
+    {
+      font-size:1.5rem;
+    }
+
 
   }
-
-=======
-  .logo p
-  {
-    font-family: 'MuseoModerno', serif !important;
-    text-align:center;
-    font-size: 10rem;
-    font-weight: bold;
-    text-transform: uppercase;
-
-  }
-
-.about
-{
-  font-weight: bold;
-  text-align: center;
-  font-size: 2rem;
-}
-
-.letter p
-{
-  display: inline-block;
-  opacity: 1;
-  transform: translateY(0);
-  animation: bounce 1s ease-in-out infinite;
-}
-
-.desc
-{
-  font-weight: normal;
-
-  font-size: 1.5rem;
-}
->>>>>>> Stashed changes
 
 
