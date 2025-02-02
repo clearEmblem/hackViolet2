@@ -15,6 +15,11 @@
   text-transform: uppercase;
   text-align: center; /* This will center the text horizontally */
 }
+.recording-active {
+  background-color: red !important;
+  border-color: darkred !important;
+  color: white !important;
+}
 
 h2 {
   font-size: 5rem;

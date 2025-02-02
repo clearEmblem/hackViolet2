@@ -1,40 +1,11 @@
-/*
-const playback = document.querySelector(".playback");
-document.addEventListener("DOMContentLoaded", () => {
-  waitForElement("#record").then((recordButton) => {
-    console.log("Record button found:", recordButton);
-    recordButton.addEventListener("click", toggleMic);
-
-    const recSymbol = document.createElement("span");
-    recSymbol.textContent = "🔴";
-    recSymbol.style.marginLeft = "10px";
-    recSymbol.classList.add("rec-symbol");
-
-    const containerDiv = document.querySelector(".container.text-center");
-    //checks if rec symbol is there
-    
-    const existingSymbol = containerDiv.querySelector(".container.text-center");
-    
-    //const existingSymbol = containerDiv.querySelector(".rec-symbol");
-
-    if (existingSymbol) {
-      // If the symbol exists, remove it
-      containerDiv.removeChild(existingSymbol);
-    } else {
-      // If the symbol doesn't exist, append it
-      containerDiv.appendChild(recSymbol);
-  }});
-});
-*/
- 
-//BOTH MIC AND SYMBOL WORK
 const playback = document.querySelector(".playback");
 
 document.addEventListener("DOMContentLoaded", () => {
   waitForElement("#record").then((recordButton) => {
     console.log("Record button found:", recordButton);
+    
     recordButton.addEventListener("click", () => {
-      toggleMic(); // ✅ Keep mic recording function as it is
+      toggleMic(); // Keep mic recording function as it is
 
       const containerDiv = document.querySelector(".container.text-center");
 
@@ -42,8 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const existingSymbol = containerDiv.querySelector(".rec-symbol");
 
       if (existingSymbol) {
-        // If the symbol exists, remove it
+        // If the symbol exists, remove it and reset button text & style
         containerDiv.removeChild(existingSymbol);
+        recordButton.textContent = "Record"; // Change text back to "Record"
+        recordButton.classList.remove("recording-active"); // Remove recording styles
       } else {
         // Create the red symbol element
         const recSymbol = document.createElement("span");
@@ -53,74 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Append the symbol next to the record button
         containerDiv.appendChild(recSymbol);
+        recordButton.textContent = "Recording..."; // Change text to "Recording..."
+        recordButton.classList.add("recording-active"); //  Add recording styles
       }
     });
   });
 });
 
-//the button works but not the mic
-/*
-document.addEventListener("DOMContentLoaded", () => {
-  waitForElement("#record").then((recordButton) => {
-    console.log("Record button found:", recordButton);
-
-    // Target the container div
-    const containerDiv = document.querySelector(".container.text-center");
-
-    recordButton.addEventListener("click", () => {
-      toggleMic(); // Call your mic toggle function
-
-      // Check if the red symbol already exists
-      let existingSymbol = containerDiv.querySelector(".rec-symbol");
-
-      if (existingSymbol) {
-        // If the symbol exists, remove it
-        containerDiv.removeChild(existingSymbol);
-      } else {
-        // Create the red symbol element
-        const recSymbol = document.createElement("span");
-        recSymbol.textContent = "🔴";  // Red circle emoji
-        recSymbol.style.marginLeft = "10px";  // Add margin to the left of the symbol
-        recSymbol.classList.add("rec-symbol");  // Add a class for easier selection
-
-        // Append the symbol next to the record button
-        containerDiv.appendChild(recSymbol);
-      }
-    });
-  });
-});
-*/
-/*
-document.addEventListener("DOMContentLoaded", () => {
-  waitForElement("#record").then((recordButton) => {
-    console.log("Record button found:", recordButton);
-
-    // Target the container div
-    const containerDiv = document.querySelector(".container.text-center");
-
-    recordButton.addEventListener("click", () => {
-      toggleMic(); // ✅ Make sure the mic recording function is called
-
-      // Check if the red symbol already exists
-      let existingSymbol = containerDiv.querySelector(".rec-symbol");
-
-      if (existingSymbol) {
-        // If the symbol exists, remove it
-        containerDiv.removeChild(existingSymbol);
-      } else {
-        // Create the red symbol element
-        const recSymbol = document.createElement("span");
-        recSymbol.textContent = "🔴";  // Red circle emoji
-        recSymbol.style.marginLeft = "10px";  // Add margin to the left of the symbol
-        recSymbol.classList.add("rec-symbol");  // Add a class for easier selection
-
-        // Append the symbol next to the record button
-        containerDiv.appendChild(recSymbol);
-      }
-    });
-  });
-});
-*/
 function waitForElement(selector) {
   return new Promise((resolve) => {
     if (document.querySelector(selector)) {
