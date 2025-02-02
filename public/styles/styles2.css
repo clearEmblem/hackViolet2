@@ -1,0 +1,74 @@
+.jumbotron {
+    padding: 4rem 2rem;
+}
+
+.navbar-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari support */
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.jumbotron {
+    padding: 4rem 2rem;
+}
+
+.navbar-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 60px;
+    /* Adjust the width */
+    height: 60px;
+    /* Adjust the height */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    /* Adjust the font size */
+}
+
+/* Make topic font size larger */
+#topic {
+    font-size: 3rem;
+    /* Adjust the font size as needed */
+    font-weight: bold;
+}
+
+/* Change background color of all cards to white */
+.card {
+    background-color: white;
+}
+
+/* styles.css or styles2.css */
+.scrollable {
+    display: flex;
+    flex-direction: column;
+    /* Stack elements vertically */
+    height: 100vh;
+    /* Or a specific height if needed */
+    overflow-y: auto;
+    /* Enable scrolling only if content overflows */
+}
+
+.accordion {
+    flex-shrink: 0;
+    /* Prevent accordion from shrinking */
+}
+
+#cards-container {
+    flex-grow: 1;
+    /* Allow cards container to expand and take up available space */
+    overflow-y: auto;
+    /* Enable scrolling within the card container if its content overflows */
+}
+
+/* ... rest of your CSS */
